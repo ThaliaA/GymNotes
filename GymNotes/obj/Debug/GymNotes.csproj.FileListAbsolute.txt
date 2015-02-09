@@ -53,3 +53,4 @@ C:\Personal\Projects\GymNotes\GymNotes\bin\Microsoft.Owin.Security.MicrosoftAcco
 C:\Personal\Projects\GymNotes\GymNotes\obj\Debug\GymNotes.csprojResolveAssemblyReference.cache
 C:\Personal\Projects\GymNotes\GymNotes\obj\Debug\GymNotes.dll
 C:\Personal\Projects\GymNotes\GymNotes\obj\Debug\GymNotes.pdb
+C:\Personal\Projects\GymNotes\GymNotes\bin\Microsoft.Azure.Documents.Client.dll
