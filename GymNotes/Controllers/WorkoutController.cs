@@ -18,19 +18,24 @@ namespace GymNotes.Controllers
     {
         // GET: Workout
         
-        private static async Task<DateTime> CreateDb()
+        private static async Task<DocumentCollection> CreateDb()
         {
            
             var client = new DocumentClient(new Uri("https://gymnotes.documents.azure.com:443"), "ocCyErceT/NWyuLFwOXTi1KIsT59oC1aiboEgx56R1DoOAmegoeYhIolEZK/ZB8UirfBhn/7ZmfqP5bk/5oNmg==");
             Database database = client.CreateDatabaseQuery().Where(x => x.Id == "GymNotes").AsEnumerable().FirstOrDefault();  
                 
             // Create a document collection.
-            DocumentCollection documentCollection = await client.CreateDocumentCollectionAsync(database.CollectionsLink,
-                new DocumentCollection
-                {
-                    Id = "Workouts"
-                });
-                return DateTime.Now;
+            var workoutCollection = client.CreateDocumentCollectionQuery(database.CollectionsLink).Where(x => x.Id == "Workouts").AsEnumerable().FirstOrDefault();
+            if (workoutCollection == null)
+            {
+                DocumentCollection documentCollection = await client.CreateDocumentCollectionAsync(database.CollectionsLink,
+                    new DocumentCollection
+                    {
+                        Id = "Workouts"
+                    });
+                return documentCollection;
+            }
+            return null;
         }
         public ActionResult Index()
         {
