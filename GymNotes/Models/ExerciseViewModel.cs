@@ -5,10 +5,16 @@ using System.Web;
 
 namespace GymNotes.Models
 {
-    public class WorkoutViewModel
+    public class ExerciseModel
+    {
+        public ExerciseDefinition Exercise { get; set; }
+        
+    }
+
+    public class ExerciseDefinition
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<ExerciseModel> Exercises { get; set; }
+        public string TargetMuscle { get; set; }
     }
 }
