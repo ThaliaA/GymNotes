@@ -165,14 +165,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WorkoutController.cs" />
+    <Compile Include="Entities\Exercise.cs" />
+    <Compile Include="Entities\ExerciseDefinition.cs" />
+    <Compile Include="Entities\Set.cs" />
+    <Compile Include="Entities\WorkoutDefinition.cs" />
+    <Compile Include="Entities\WorkoutSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ExerciseViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\WorkoutViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -234,6 +237,7 @@
     <Content Include="Views\Workout\Create.cshtml" />
     <Content Include="Views\Workout\Start.cshtml" />
     <Content Include="Views\Workout\Index.cshtml" />
+    <Content Include="Views\Workout\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

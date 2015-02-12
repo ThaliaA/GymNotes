@@ -41,16 +41,15 @@ namespace GymNotes.Controllers
             }
             return workoutCollection;
         }
-        private static async Task<WorkoutViewModel> AddWorkout()
+        private static async Task<WorkoutViewModel> AddWorkout(WorkoutViewModel viewmodel)
         {
             var client = new DocumentClient(new Uri("https://gymnotes.documents.azure.com:443"), "ocCyErceT/NWyuLFwOXTi1KIsT59oC1aiboEgx56R1DoOAmegoeYhIolEZK/ZB8UirfBhn/7ZmfqP5bk/5oNmg==");
             var database = await GetDb(client);
             var collection = await GetCollection();
 
-            WorkoutViewModel workout = new WorkoutViewModel() { Name = "Allen Roger", Description = "Beskrivning", Exercises = new List<ExerciseModel>() };
-            await client.CreateDocumentAsync(collection.SelfLink, workout);
+            await client.CreateDocumentAsync(collection.SelfLink, viewmodel);
 
-            return workout;
+            return viewmodel;
         }
         public ActionResult Index()
         {
@@ -69,9 +68,14 @@ namespace GymNotes.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection formCollection)
         {
-            var b = AddWorkout();
             var viewmodel = new WorkoutViewModel();
+            if (TryUpdateModel(viewmodel, formCollection))
+            {
+                var model = AddWorkout(viewmodel);
 
+                return View("Result", viewmodel);
+
+            }
             return View(viewmodel);
         }
         public ActionResult Start()
