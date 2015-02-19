@@ -7,6 +7,6 @@ namespace GymNotes.Entities
 {
     public class Exercise
     {
-        public ExerciseDefinition Exercise { get; set; }
+        public ExerciseDefinition ExerciseDefinition { get; set; }
     }
 }
